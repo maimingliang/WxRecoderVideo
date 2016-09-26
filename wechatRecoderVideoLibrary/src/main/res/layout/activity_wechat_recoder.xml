@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_header"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        android:background="@color/black"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_recorder_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10.0dip"
+            android:text="取消"
+            android:textColor="@color/FF00FF00"
+            android:textSize="16.0dip" />
+
+        <TextView
+            android:id="@+id/tv_select_video"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10.0dip"
+            android:text="选择视频"
+            android:visibility="gone"
+            android:textColor="@color/FF00FF00"
+            android:textSize="16.0dip" />
+    </RelativeLayout>
+
+    <RelativeLayout
+         android:id="@+id/rl_recoder_surfaceview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_header"
+        android:background="@color/black"
+        >
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <ImageView
+            android:id="@+id/img_record_focusing"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
+            android:scaleType="fitXY"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+           android:id="@+id/ll_bottom_recoder"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+        android:visibility="visible">
+
+
+
+        <TextView
+
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_recoder_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+             android:padding="2.0dip"
+            android:text="上滑取消录制"
+            android:textColor="@color/white"
+            android:textSize="12.0dip"
+            android:visibility="visible" />
+
+        <com.maiml.wechatrecodervideolibrary.widget.RecoderProgress
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tv_recoder_tips"
+            android:visibility="visible"
+            android:id="@+id/recorder_progress"
+            android:layout_width="fill_parent"
+            android:layout_height="2.0dip"
+             />
+
+        <RelativeLayout
+            android:background="@color/black"
+            android:layout_below="@id/recorder_progress"
+             android:id="@+id/rl_recorder_bottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="40dp"
+
+            android:visibility="visible">
+
+            <com.maiml.wechatrecodervideolibrary.widget.CircleBackgroundTextView
+                android:layout_alignParentBottom="true"
+                android:id="@+id/btn_press"
+                android:layout_width="@dimen/recoder_circle_bg_width"
+                android:layout_height="@dimen/recoder_circle_bg_height"
+                 android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:text="按住拍"
+                android:textColor="@color/FF00FF00"
+                android:textSize="20.0dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

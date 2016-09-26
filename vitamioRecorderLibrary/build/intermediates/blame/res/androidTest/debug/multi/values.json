@@ -1,0 +1,68 @@
+[
+    {
+        "outputFile": "/Users/maimingliang/Documents/wxrecoder/Wx/vitamioRecorderLibrary/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "/Users/maimingliang/Documents/wxrecoder/Wx/vitamioRecorderLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 51,
+                        "endOffset": 102
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endLine": 9,
+                    "endColumn": 12,
+                    "endOffset": 393
+                },
+                "from": {
+                    "file": "/Users/maimingliang/Documents/wxrecoder/Wx/vitamioRecorderLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 107,
+                        "endLine": 9,
+                        "endColumn": 12,
+                        "endOffset": 393
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 398,
+                    "endLine": 12,
+                    "endColumn": 12,
+                    "endOffset": 553
+                },
+                "from": {
+                    "file": "/Users/maimingliang/Documents/wxrecoder/Wx/vitamioRecorderLibrary/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 398,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 553
+                    }
+                }
+            }
+        ]
+    }
+]

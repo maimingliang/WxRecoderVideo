@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="camera_focus_area_size">96dp</dimen>
+    <dimen name="recoder_circle_bg_width">141dp</dimen>
+    <dimen name="recoder_circle_bg_height">141dp</dimen>
+</resources>

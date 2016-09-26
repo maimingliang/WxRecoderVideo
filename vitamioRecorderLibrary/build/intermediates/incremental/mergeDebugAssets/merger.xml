@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/maimingliang/Documents/wxrecoder/Wx/vitamioRecorderLibrary/src/main/assets"/><source path="/Users/maimingliang/Documents/wxrecoder/Wx/vitamioRecorderLibrary/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/maimingliang/Documents/wxrecoder/Wx/vitamioRecorderLibrary/src/debug/assets"/></dataSet></merger>
