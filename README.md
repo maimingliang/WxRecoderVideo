@@ -28,8 +28,8 @@
 
 * 配置拍摄视频缓存路径
 ```xml
-<application
-    ...
+
+
        // 设置拍摄视频缓存路径
         File dcim = Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
