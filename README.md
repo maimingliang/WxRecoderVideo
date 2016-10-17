@@ -165,3 +165,7 @@
 ##Thanks
 
 [VCamera](http://wscdn.miaopai.com/download/VCameraRecorder3.1.pdf)
+
+#关于我
+
+[简书maimingliang](http://www.jianshu.com/users/141bda5f1c5c/latest_articles)
