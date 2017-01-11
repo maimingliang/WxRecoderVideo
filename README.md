@@ -1,5 +1,23 @@
 # [WxRecoderVideo](https://github.com/maimingliang/WxRecoderVideo)
 
+#更新
+
+录制出来的视频的大小还是比较大，但可以通过ffmpeg 来对视频压缩,
+
+怎么压缩? 
+
+在vitamioRecorderLibrary 中 MediaRecorderNative类的 35 36行中有一条ffmpeg的命令。
+ 
+>-crf：这是最重要的一个选项，用于指定输出视频的质量，取值范围是0-51，默认值为23，
+数字越小输出视频的质量越高。这个选项会直接影响到输出视频的码率。一般来说，
+压制480p我会用20左右，压制720p我会用16-18，1080p我没尝试过。个人觉得，
+一般情况下没有必要低于16。最好的办法是大家可以多尝试几个值，每个都压几分钟，看
+看最后的输出质量和文件大小，自己再按需选择。
+
+
+
+
+
 ## 简介
 基于[VCamera](https://www.vitamio.org/Download/)，仿微信录制短视频
 
