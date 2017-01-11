@@ -542,7 +542,12 @@ public class WechatRecoderActivity extends BaseActivity implements MediaRecorder
                     startRecoder();
                     break;
                 case MotionEvent.ACTION_MOVE:
-
+                    int durationMove = mMediaObject.getDuration();
+                    if (durationMove >= RECORD_TIME_MAX) {
+                        stopAll();
+                        stopRecoderAnim(mBtnPress);
+                        return true;
+                    }
                     moveY = event.getY();
                     float drution = moveY - startY;
 
