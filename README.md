@@ -2,12 +2,50 @@
 
 #更新
 
+
+最近在学习FFmpeg，撸了一个[短视频编辑器Cut,有兴趣可以看看](http://www.jianshu.com/p/7e76c1b06933)
+
 录制出来的视频的大小还是比较大，但可以通过ffmpeg 来对视频压缩,
 
 怎么压缩? 
 
-在vitamioRecorderLibrary 中 MediaRecorderNative类的 35 36行中有一条ffmpeg的命令。
- 
+在合成ts后对视频进行了压缩，10s压缩后大概在2M内。压缩代码如下：
+
+```code
+
+protected Boolean compress(boolean mergeFlag) {
+
+		if (!mergeFlag) {
+			return mergeFlag;
+		}
+
+		String cmd = "ffmpeg -y -i " + mMediaObject.getOutputTempVideoPath() + " -strict -2 -vcodec libx264 -preset ultrafast " +
+				"-crf 25 -acodec aac -ar 44100 -ac 2 -b:a 96k -s 360x640 -aspect 9:16 " + mMediaObject.getOutputVideoPath();
+
+		boolean compressFlag = UtilityAdapter.FFmpegRun("", cmd) == 0;
+
+		File file = new File(mMediaObject.getOutputTempVideoPath());
+		if(compressFlag){ //压缩成功删除临时文件
+			if (file.exists()) {
+				file.delete();
+			}
+
+			file = new File(mMediaObject.getTsPath());
+			if (file.exists()) {
+				file.delete();
+			}
+
+		}
+		return compressFlag;
+
+	}
+
+
+
+```
+
+
+
 >-crf：这是最重要的一个选项，用于指定输出视频的质量，取值范围是0-51，默认值为23，
 数字越小输出视频的质量越高。这个选项会直接影响到输出视频的码率。一般来说，
 压制480p我会用20左右，压制720p我会用16-18，1080p我没尝试过。个人觉得，
