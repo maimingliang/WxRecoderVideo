@@ -34,6 +34,7 @@ public class MediaRecorderNative extends MediaRecorderBase implements MediaRecor
 			String cmd = String.format("filename = \"%s\"; ", result.mediaPath);
 			//如果需要定制非480x480的视频，可以启用以下代码，其他vf参数参考ffmpeg的文档：
 			//cmd += String.format("addcmd = %s; "," -vf \"transpose=1,crop=480:480:0:0\" ");
+
 			UtilityAdapter.FilterParserAction(cmd, UtilityAdapter.PARSERACTION_START);
 			if (mAudioRecorder == null && result != null) {
 				mAudioRecorder = new AudioRecorder(this);

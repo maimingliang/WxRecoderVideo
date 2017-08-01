@@ -45,6 +45,7 @@ public class MediaObject implements Serializable {
 	private LinkedList<MediaPart> mMediaList = new LinkedList<MediaPart>();
 	/** 主题 */
 	public MediaThemeObject mThemeObject;
+	private String mTsPath;
 
 	public MediaObject(String key, String path) {
 		this(key, path, DEFAULT_VIDEO_BITRATE);
@@ -55,7 +56,8 @@ public class MediaObject implements Serializable {
 		this.mOutputDirectory = path;
 		this.mVideoBitrate = videoBitrate;
 		this.mOutputObjectPath = mOutputDirectory + File.separator + mKey + ".obj";
-		this.mOutputVideoPath = mOutputDirectory + File.separator + mKey +".mp4";
+		this.mOutputVideoPath = mOutputDirectory + File.separator + mKey +"_real.mp4";
+		this.mTsPath = mOutputDirectory + File.separator  + "0.ts";
 		this.mOutputVideoThumbPath = mOutputDirectory + ".jpg";
 		this.mMaxDuration = DEFAULT_MAX_DURATION;
 	}
@@ -87,6 +89,9 @@ public class MediaObject implements Serializable {
 		return mOutputDirectory + File.separator + mKey + ".mp4";
 	}
 
+	public String getTsPath() {
+		return mTsPath;
+	}
 	/** 清空主题 */
 	public void cleanTheme() {
 		mThemeObject = null;

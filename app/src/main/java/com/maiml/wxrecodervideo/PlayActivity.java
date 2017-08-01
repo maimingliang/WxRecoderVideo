@@ -3,6 +3,7 @@ package com.maiml.wxrecodervideo;
 import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.MediaController;
 import android.widget.VideoView;
@@ -70,6 +71,9 @@ public class PlayActivity extends Activity {
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
+
+                Log.e("tag"," width = " +mp.getVideoWidth());
+                Log.e("tag"," height = " +mp.getVideoHeight());
 //                mp.start();
 //                mp.setLooping(true);
             }

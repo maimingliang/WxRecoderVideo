@@ -32,6 +32,8 @@ import com.yixia.camera.util.FileUtils;
 import com.yixia.camera.util.StringUtils;
 import com.yixia.videoeditor.adapter.UtilityAdapter;
 
+import static com.yixia.videoeditor.adapter.UtilityAdapter.FFmpegRun;
+
 /**
  * 视频录制抽象类
  * 
@@ -433,7 +435,7 @@ public abstract class MediaRecorderBase implements Callback, PreviewCallback, IM
 		}
 
 		mParameters.setPreviewFrameRate(mFrameRate);
-		// mParameters.setPreviewFpsRange(15 * 1000, 20 * 1000);
+//		 mParameters.setPreviewFpsRange(15 * 1000, 20 * 1000);
 		mParameters.setPreviewSize(640, 480);// 3:2
 
 		// 设置输出视频流尺寸，采样率
@@ -693,7 +695,17 @@ public abstract class MediaRecorderBase implements Callback, PreviewCallback, IM
 			protected Boolean doInBackground(Void... params) {
 				//合并ts流
 				String cmd = String.format("ffmpeg %s -i \"%s\" -vcodec copy -acodec copy -absf aac_adtstoasc -f mp4 -movflags faststart \"%s\"", FFMpegUtils.getLogCommand(), mMediaObject.getConcatYUV(), mMediaObject.getOutputTempVideoPath());
-				return UtilityAdapter.FFmpegRun("", cmd) == 0;
+
+
+				//
+
+				Log.e("tag", " tempvidepath = " + mMediaObject.getOutputTempVideoPath());
+
+				boolean megerFlag = FFmpegRun("", cmd) == 0;
+
+				//压缩ts
+
+				return compress(megerFlag);
 			}
 
 			@Override
@@ -706,6 +718,36 @@ public abstract class MediaRecorderBase implements Callback, PreviewCallback, IM
 			}
 		}.execute();
 	}
+
+
+	protected Boolean compress(boolean mergeFlag) {
+
+		if (!mergeFlag) {
+			return mergeFlag;
+		}
+
+
+		String cmd = "ffmpeg -y -i " + mMediaObject.getOutputTempVideoPath() + " -strict -2 -vcodec libx264 -preset ultrafast " +
+				"-crf 25 -acodec aac -ar 44100 -ac 2 -b:a 96k -s 360x640 -aspect 9:16 " + mMediaObject.getOutputVideoPath();
+
+		boolean compressFlag = UtilityAdapter.FFmpegRun("", cmd) == 0;
+
+		File file = new File(mMediaObject.getOutputTempVideoPath());
+		if(compressFlag){ //压缩成功删除临时文件
+			if (file.exists()) {
+				file.delete();
+			}
+
+			file = new File(mMediaObject.getTsPath());
+			if (file.exists()) {
+				file.delete();
+			}
+
+		}
+		return compressFlag;
+
+	}
+
 
 	/** 转码队列 */
 	public static class EncodeHandler extends Handler {
