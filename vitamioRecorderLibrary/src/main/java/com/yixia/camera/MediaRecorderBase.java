@@ -695,16 +695,10 @@ public abstract class MediaRecorderBase implements Callback, PreviewCallback, IM
 			protected Boolean doInBackground(Void... params) {
 				//合并ts流
 				String cmd = String.format("ffmpeg %s -i \"%s\" -vcodec copy -acodec copy -absf aac_adtstoasc -f mp4 -movflags faststart \"%s\"", FFMpegUtils.getLogCommand(), mMediaObject.getConcatYUV(), mMediaObject.getOutputTempVideoPath());
-
-
 				//
-
 				Log.e("tag", " tempvidepath = " + mMediaObject.getOutputTempVideoPath());
-
 				boolean megerFlag = FFmpegRun("", cmd) == 0;
-
 				//压缩ts
-
 				return compress(megerFlag);
 			}
 
@@ -725,7 +719,6 @@ public abstract class MediaRecorderBase implements Callback, PreviewCallback, IM
 		if (!mergeFlag) {
 			return mergeFlag;
 		}
-
 
 		String cmd = "ffmpeg -y -i " + mMediaObject.getOutputTempVideoPath() + " -strict -2 -vcodec libx264 -preset ultrafast " +
 				"-crf 25 -acodec aac -ar 44100 -ac 2 -b:a 96k -s 360x640 -aspect 9:16 " + mMediaObject.getOutputVideoPath();
